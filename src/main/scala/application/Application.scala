@@ -1,5 +1,5 @@
 package application
 
-object Application {
+object Application extends App {
   ApplicationService.process()
 }

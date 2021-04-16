@@ -2,7 +2,7 @@ package model
 
 case class Asteroid(
                     page : Page ,
-                    near_earth_objects: List[Object]
+                    near_earth_objects: List[Near_earth_objects]
 
                     )
 class Page(

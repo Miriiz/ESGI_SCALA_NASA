@@ -3,7 +3,8 @@ package model
 case class Satellite(
                      totalItems : Option[Int],
                      member : List[solo_satellite]
-                    )
+                    ){
+}
 
 class  solo_satellite (
                 satelliteId : Int,
