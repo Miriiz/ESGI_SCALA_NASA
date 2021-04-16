@@ -10,6 +10,7 @@ class Page(
             total_elements :  Option[Int],
             total_pages :  Option[Int],
             number :  Option[Int]
+
           )
 class  Near_earth_objects(
                            id : String,
