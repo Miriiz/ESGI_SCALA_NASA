@@ -3,7 +3,7 @@ import org.apache.http.HttpStatus
 import org.apache.http.client.methods.HttpGet
 import org.apache.http.impl.client.HttpClientBuilder
 import java.io.{ByteArrayOutputStream, IOException}
-//import com.google.gson.Gson
+import com.google.gson.Gson
 
 object JsonUtils {
   def getJsonContent(url:String): String ={
