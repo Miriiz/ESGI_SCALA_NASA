@@ -6,6 +6,17 @@ import java.io.{ByteArrayOutputStream, IOException}
 import com.google.gson.Gson
 
 object JsonUtils {
+
+  def nameExoplaneteArray(json: String): String ={
+    val return_json = "{\"member\": " + json + "}"
+    return return_json
+  }
+
+  def removeUselessHeaderFromExoplanetes(json:String): String ={
+    val return_json = json.substring(json.indexOf("["))
+    return return_json
+  }
+
   def getJsonContent(url:String): String ={
 
     val client = HttpClientBuilder.create.build

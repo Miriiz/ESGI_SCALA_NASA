@@ -1,21 +1,21 @@
 package model
 import upickle.default.{ReadWriter => RW, macroRW}
 
-case class Satellite(
+case class Satellite_list(
                      totalItems : Int,
-                     member : List[Solo_satellite])
+                     member : List[Satellite])
 
 
-case class  Solo_satellite (
+case class  Satellite(
                 satelliteId : Int,
                 name : String,
                 date : String,
                 line1 : String,
                 line2 : String
               )
-object Satellite{
-  implicit val rw: RW[Satellite] = macroRW
+object Satellite_list{
+  implicit val rw: RW[Satellite_list] = macroRW
 }
-object Solo_satellite{
-implicit val rw: RW[Solo_satellite] = macroRW
+object Satellite{
+implicit val rw: RW[Satellite] = macroRW
 }
