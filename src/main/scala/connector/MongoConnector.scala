@@ -32,7 +32,12 @@ class MongoConnector(var db: String) {
                                              "designation" -> ast.designation, "orbital_data" -> orbital_data_doc,
                                               "absolute_magnitude_h" -> ast.absolute_magnitude_h.toString, "close_approach_data" -> close_approach_data_doc,
                                               "estimated_diameter" -> ast.estimated_diameter.kilometers.estimated_diameter_max.toString)
-      asteroid_collection.insertOne(asteroid_doc)
+      val observable: Observable[Completed] = asteroid_collection.insertOne(asteroid_doc)
+      observable.subscribe(new Observer[Completed] {
+        override def onNext(result: Completed): Unit = println("Inserted")
+        override def onError(e: Throwable): Unit = println("Failed")
+        override def onComplete(): Unit = println("Completed")
+      })
     })
     true
   }
@@ -41,7 +46,12 @@ class MongoConnector(var db: String) {
     exoplanets.member.foreach(exo => {
       val exo_doc : Document = Document("pl_name" -> exo.pl_name, "st_massn" -> exo.st_massn, "pl_letter" -> exo.pl_letter,
                                         "pl_hostname" -> exo.pl_hostname, "pl_discmethod" -> exo.pl_discmethod)
-      exoplanet_collection.insertOne(exo_doc)
+      val observable: Observable[Completed] = exoplanet_collection.insertOne(exo_doc)
+      observable.subscribe(new Observer[Completed] {
+        override def onNext(result: Completed): Unit = println("Inserted")
+        override def onError(e: Throwable): Unit = println("Failed")
+        override def onComplete(): Unit = println("Completed")
+      })
     })
     true
   }
@@ -50,7 +60,12 @@ class MongoConnector(var db: String) {
     satellites.member.foreach(sat => {
       val sat_doc : Document = Document("name" -> sat.name, "id" -> sat.satelliteId, "date" -> sat.date,
                                         "line1" -> sat.line1, "line2" -> sat.line2)
-      satellite_collection.insertOne(sat_doc)
+      val observable: Observable[Completed] = satellite_collection.insertOne(sat_doc)
+      observable.subscribe(new Observer[Completed] {
+        override def onNext(result: Completed): Unit = println("Inserted")
+        override def onError(e: Throwable): Unit = println("Failed")
+        override def onComplete(): Unit = println("Completed")
+      })
     })
     true
   }
